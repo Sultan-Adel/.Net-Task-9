@@ -1,0 +1,19 @@
+@model IEnumerable<SchoolSystem.Models.Department>
+
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<h2>Departments</h2>
+<a asp-action="Add" class="btn btn-success mb-3">+ Add Department</a>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr><th>Id</th><th>Name</th><th>Manager</th><th>Students</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model)
+        {
+            <tr><td>@d.Id</td><td>@d.Name</td><td>@d.MgrName</td><td>@(d.Students?.Count ?? 0)</td></tr>
+        }
+    </tbody>
+</table>

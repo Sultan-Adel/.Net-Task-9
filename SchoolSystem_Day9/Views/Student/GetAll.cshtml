@@ -1,0 +1,31 @@
+@model IEnumerable<SchoolSystem.Models.Student>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Students</h2>
+    <a asp-controller="Student" asp-action="Add" class="btn btn-success">+ Add Student</a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr><th>Id</th><th>Name</th><th>Age</th><th>Department</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Name</td>
+                <td>@s.Age</td>
+                <td>@s.Department?.Name</td>
+                <td class="d-flex gap-1">
+                    <a asp-controller="Student" asp-action="Edit" asp-route-id="@s.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-controller="Student" asp-action="Delete" asp-route-id="@s.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

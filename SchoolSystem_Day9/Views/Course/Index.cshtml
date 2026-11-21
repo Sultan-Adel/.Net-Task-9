@@ -1,0 +1,19 @@
+@model IEnumerable<SchoolSystem.Models.Course>
+
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<h2>Courses</h2>
+<a asp-action="Add" class="btn btn-success mb-3">+ Add Course</a>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr><th>Id</th><th>Name</th><th>Min Degree</th><th>Max Degree</th><th>Department</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr><td>@c.Id</td><td>@c.Name</td><td>@c.MinDegree</td><td>@c.Degree</td><td>@c.Department?.Name</td></tr>
+        }
+    </tbody>
+</table>
